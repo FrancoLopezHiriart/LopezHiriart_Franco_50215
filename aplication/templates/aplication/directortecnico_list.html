@@ -1,0 +1,60 @@
+{% extends "aplication/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Directores Tecnicos</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"><h2>Directores Tecnicos</h2></td>
+        <td>
+            <a
+            href="{% url 'directores_tecnicos_create' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+            </a>
+        </td>        
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>  
+            <th>Equipo</th>           
+        </tr>
+    </thead>
+    <tbody>
+    {% for dt in directortecnico_list  %}
+        <tr>
+            <td>{{ dt.id }}</td>
+            <td>{{ dt.nombre }}</td>
+            <td>{{ dt.apellido }}</td>
+            <td>{{ dt.email }}</td>
+            <td>{{ dt.equipo }}</td>
+            <td>
+                <a
+                  href="{% url 'directores_tecnicos_update' dt.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Editar DT"></i>
+                </a>
+                <a
+                  href="{% url 'directores_tecnicos_delete' dt.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Eliminar DT"></i>
+                </a>                
+            </td>  
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

@@ -1,0 +1,60 @@
+{% extends "aplication/index.html" %}
+
+
+{% block titulo %}
+<h1 class="mb-5">Talentos</h1>
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td width="200"><h2>Talentos</h2></td>
+        <td>
+            <a
+            href="{% url 'talentos_create' %}"
+            class="btn btn-primary btn-sm"
+            ><i class="fa fa-plus fa-lg" title="Crear"> </i>
+            </a>
+        </td>        
+    </tr>
+</table>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>  
+            <th>Equipo</th>           
+        </tr>
+    </thead>
+    <tbody>
+    {% for t in talento_list  %}
+        <tr>
+            <td>{{ t.id }}</td>
+            <td>{{ t.nombre }}</td>
+            <td>{{ t.apellido }}</td>
+            <td>{{ t.edad }}</td>
+            <td>{{ t.equipo }}</td>
+            <td>
+                <a
+                  href="{% url 'talentos_update' j.id %}"
+                  class="btn btn-primary"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-edit fa-sm" title="Editar Talento"></i>
+                </a>
+                <a
+                  href="{% url 'talentos_delete' j.id %}"
+                  class="btn btn-danger"
+                  style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                  ><i class="fa fa-trash fa-sm" title="Eliminar Talento"></i>
+                </a>                
+            </td>  
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock contenido %}

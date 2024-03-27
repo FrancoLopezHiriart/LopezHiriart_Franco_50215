@@ -1,0 +1,18 @@
+{% extends "aplication/index.html" %}
+
+{% block titulo %}
+
+<h1 class="mb-5">Buscar Equipos</h1>
+
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<form action="{% url 'encontrar_equipos' %}" method="get">
+    {% csrf_token %}
+    <p>Ingrese equipo a buscar: <input type="text" name="buscar" id="buscar"></p>
+    <input type="submit" value="Buscar Equipo">
+</form>
+
+{% endblock contenido %}
